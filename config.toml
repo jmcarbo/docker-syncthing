@@ -1,0 +1,6 @@
+[template]
+src = "syncthing.tmpl"
+dest = "/tmp/config.xml"
+keys = [
+    "/syncthing",
+]

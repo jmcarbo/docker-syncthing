@@ -1,0 +1,27 @@
+#!/bin/bash
+
+generate_template() {
+	confd -onetime -backend env
+	cat /tmp/config.xml
+	END=${1:-5}
+	for i in $(seq 1 "$END")
+	do
+		cp /tmp/config.xml "node$i"
+	done
+}
+
+main() {
+	END=${1:-5}
+	for i in $(seq 1 "$END")
+	do
+		mkdir -p "node$i"
+		RES=$(syncthing -generate "node$i" | grep "Device ID" | awk '{print $5;}')
+		VAR="SYNCTHING_NODE$i"
+		export $VAR=$RES
+		echo "${!VAR}" 
+	done
+}
+
+main "$@"
+echo "...."
+generate_template

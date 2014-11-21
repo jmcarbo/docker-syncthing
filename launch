@@ -1,0 +1,8 @@
+#!/bin/bash
+main() {
+	NODE=${1:-"node1"}
+	syncthing -home=$NODE
+}
+
+main "$@"
+
