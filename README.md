@@ -14,11 +14,11 @@ Due to the inner workings of syncthing, my approach to dockerizing it is:
 ej:
 
 ```
-	docker run -v /data:/data -p 22000:22000 -p 21025:21025/udp -p 8080:8080 --net host aaa launch node1
+	docker run -v /data:/data -p 22000:22000 -p 21025:21025/udp -p 8081:8081 --net host aaa launch node1
 	
 	...
 	
-	docker run -v /data:/data -p 22000:22000 -p 21025:21025/udp -p 8080:8080 --net host aaa launch node2
+	docker run -v /data:/data -p 22000:22000 -p 21025:21025/udp -p 8081:8081 --net host aaa launch node2
 ```
 
 To deploy a custom image you can use docker save image, copy the archive to another machine and run docker load image or
